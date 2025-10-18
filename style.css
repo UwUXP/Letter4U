@@ -1,0 +1,247 @@
+#envelope {
+  position: relative;
+  width: 320px;
+  height: 220px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 150px;
+  background-color: #d9534f;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.front {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 3;
+}
+
+.flap {
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-bottom: 100px solid transparent;
+  border-top: 120px solid #d9534f;
+  transform-origin: top;
+  pointer-events: none;
+}
+
+.pocket {
+  border-left: 160px solid #f5a3a2;
+  border-right: 160px solid #f5a3a2;
+  border-bottom: 110px solid #ff6f61;
+  border-top: 110px solid transparent;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.letter {
+  position: relative;
+  background-color: #fff;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 90%;
+  top: 5%;
+  border-radius: 6px;
+  box-shadow: 0 2px 26px rgba(0, 0, 0, 0.12);
+  font-family: 'IBM Plex Sans Thai',sans-serif ;
+}
+
+.words {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  height: auto;
+  text-align: left;
+}
+
+.words.line1 {
+  top: 15%;
+  width: 80%;
+  height: auto;
+  font-size: 1.2rem;
+}
+
+.words.line2 {
+  top: 30%;
+  font-size: 0.99rem;
+}
+
+.words.line3 {
+  top: 80%;
+  font-size: 0.9rem;
+}
+
+.words.line4 {
+  top: 60%;
+  font-size: 1.1rem;
+}
+
+/* --- ส่วนควบคุมแอนิเมชันหลัก (แก้ไขตรงนี้) --- */
+
+/* 1. สถานะ "เปิด" */
+.open .letter {
+  animation: revealAndCover 4s ease-in-out 1.2s forwards;
+}
+.open .flap {
+  transform: rotateX(180deg);
+  transition: transform 1s ease-in-out;
+  z-index: 1;
+}
+
+/* 2. สถานะ "กำลังปิด" */
+.is-closing .letter {
+  /* จดหมายเริ่มเก็บเข้าซองทันที */
+  animation: hideAndTuck 4s ease-in-out 1 forwards;
+}
+.is-closing .flap {
+  /* ฝาซองจะเล่นอนิเมชันนี้ โดยจะรอ 1 วิ แล้วค่อยปิดในวิสุดท้าย */
+  animation: closeFlapDelayed 6s ease-in-out 1 forwards;
+}
+
+/* 3. สถานะ "ปิดสนิท" (ไม่มีแอนิเมชัน) */
+.close .letter {
+  transform: translateY(0px);
+  z-index: 1;
+}
+.close .flap {
+  transform: rotateX(0deg);
+  z-index: 5;
+}
+
+/* --- ส่วนหัวใจ --- */
+.hearts {
+  position: absolute;
+  top: 110px; /* ปรับตำแหน่งให้สัมพันธ์กับขนาดใหม่ */
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.heart {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  pointer-events: none;
+}
+
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: #e60073; /* Deep romantic pink */
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+  pointer-events: none;
+}
+
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.close .heart {
+  opacity: 0;
+  animation: none;
+}
+
+.a1 {
+  left: 70%;
+  transform: scale(0.6);
+  opacity: 1;
+  animation: slideUp 3s linear 1, sideSway 2s ease-in-out 4 alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.7s;
+}
+
+.a2 {
+  left: 55%;
+  transform: scale(1);
+  opacity: 1;
+  animation: slideUp 3s linear 1, sideSway 4s ease-in-out 2 alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.7s;
+}
+
+.a3 {
+  left: -10%;
+  transform: scale(0.8);
+  opacity: 1;
+  animation: slideUp 3.8s linear 1, sideSway 2s ease-in-out 6 alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.7s;
+}
+
+.a4 {
+  left: 0%;
+  transform: scale(0.7);
+  opacity: 1;
+  animation: slideUp 3s linear 1, sideSway 2s ease-in-out 5 alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.7s;
+}
+
+.a5 {
+  left: 40%;
+  transform: scale(0.9);
+  opacity: 1;
+  animation: slideUp 3s linear 1, sideSway 2s ease-in-out 5 alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.7s;
+}
+
+/* --- ส่วนของปุ่มและพื้นหลัง --- */
+body { background-color: #f0e6f6; }
+.envelope-wrapper { height: 380px; }
+.reset { text-align: center; }
+.reset button {
+  font-weight: 800;
+  transition: all 0.1s linear;
+  appearance: none;
+  background-color: transparent;
+  border: solid 2px #d9534f;
+  border-radius: 4px;
+  color: #d9534f;
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin: 5px;
+  padding: 10px;
+  line-height: 1em;
+  text-decoration: none;
+  min-width: 120px;
+  cursor: pointer;
+  font-family: 'IBM Plex Sans Thai',sans-serif ;
+}
+.reset button:hover {
+  background-color: #d9534f;
+  color: #fff;
+}
+
+/* --- Keyframes ทั้งหมด --- */
+@keyframes slideUp { 0% { top: 0; } 100% { top: -600px; } }
+@keyframes sideSway { 0% { margin-left: 0px; } 100% { margin-left: 50px; } }
+@keyframes revealAndCover {
+  0% { transform: translateY(0) scale(1); z-index: 2; }
+  50% { transform: translateY(-214px) scale(1); z-index: 2; }
+  100% { transform: translateY(-100px) scale(1.15); z-index: 6; }
+}
+@keyframes hideAndTuck {
+  0% { transform: translateY(-100px) scale(1.15); z-index: 6; }
+  50% { transform: translateY(-214px) scale(1); z-index: 2; }
+  100% { transform: translateY(0) scale(1); z-index: 2; }
+}
+/* Keyframe ใหม่สำหรับปิดฝาซองโดยเฉพาะ */
+@keyframes closeFlapDelayed {
+  0%   { transform: rotateX(180deg); z-index: 1; }
+  50%  { transform: rotateX(180deg); z-index: 1; } /* รอ 1 วิ (50% ของ 2 วิ) */
+  100% { transform: rotateX(0deg);   z-index: 5; } /* ค่อยปิดในวิสุดท้าย */
+}
