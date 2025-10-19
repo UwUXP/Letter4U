@@ -47,37 +47,27 @@
   border-radius: 6px;
   box-shadow: 0 2px 26px rgba(0, 0, 0, 0.12);
   font-family: 'IBM Plex Sans Thai',sans-serif ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column; /* จัดเรียงจากบนลงล่าง */
+  gap: 12px; /* กำหนดระยะห่างระหว่างแต่ละบรรทัด (ปรับค่านี้ได้) */
+  padding: 20px;
 }
 
 .words {
-  position: absolute;
-  left: 10%;
-  width: 80%;
-  height: auto;
+  width: 100%;
   text-align: left;
+  line-height: 1.4;
 }
 
-.words.line1 {
-  top: 15%;
-  width: 80%;
-  height: auto;
-  font-size: 1.2rem;
-}
-
-.words.line2 {
-  top: 30%;
-  font-size: 0.99rem;
-}
-
-.words.line3 {
-  top: 80%;
-  font-size: 0.9rem;
-}
-
-.words.line4 {
-  top: 60%;
-  font-size: 1.1rem;
-}
+.words.line1 { font-size: 1.2rem; }
+.words.line2 { font-size: 0.99rem; }
+.words.line3 { font-size: 0.9rem; }
 
 /* --- ส่วนควบคุมแอนิเมชันหลัก (แก้ไขตรงนี้) --- */
 
