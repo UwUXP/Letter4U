@@ -30,7 +30,7 @@ $(document).ready(function () {
     setTimeout(function() {
       // 3. พอแอนิเมชันจบ ก็เปิดใช้งานปุ่ม "ปิด"
       btn_reset.prop('disabled', false);
-    }, 5000); 
+    }, 3500); 
   }
   
   function close() {
@@ -47,6 +47,6 @@ $(document).ready(function () {
       
       // 3. พอแอนิเมชันจบ ก็เปิดใช้งานปุ่ม "เปิด"
       btn_open.prop('disabled', false);
-    }, 8000); 
+    }, 4500); 
   }
 });
