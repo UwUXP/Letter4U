@@ -50,24 +50,54 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px; /* ใส่ padding กลับเข้ามาได้เลย (อาจจะลดจาก 20 เพื่อความสวยงาม) */
+  box-sizing: border-box; /* เพิ่มไม้กายสิทธิ์เข้าไป! */
 }
 
 .text-content {
   display: flex;
   flex-direction: column; /* จัดเรียงจากบนลงล่าง */
   gap: 12px; /* กำหนดระยะห่างระหว่างแต่ละบรรทัด (ปรับค่านี้ได้) */
-  padding: 20px;
+  padding: 15px;
+  max-width: 250px;  /* กำหนดความกว้างสูงสุด (ลองปรับค่านี้) */
+  max-height: 150px; /* กำหนดความสูงสูงสุด (ลองปรับค่านี้) */
+  overflow: auto;    /* สำคัญ: ถ้าข้อความยาวเกิน ให้มี scrollbar */
 }
 
-.words {
+.letter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-content {
   width: 100%;
-  text-align: left;
-  line-height: 1.4;
+  display: flex;
+  flex-direction: column; /* จัดเรียงจากบนลงล่าง */
+  gap: 15px; /* ระยะห่างระหว่าง "To:", เนื้อหา, และ "Form:" */
 }
 
-.words.line1 { font-size: 1.2rem; }
-.words.line2 { font-size: 0.99rem; text-indent: 1em; }
-.words.line3 { font-size: 0.9rem; }
+.to-line, .from-line, .body-text {
+  margin: 0; /* ลบ margin เริ่มต้นของ <p> */
+  line-height: 1.6; /* ปรับระยะห่างระหว่างบรรทัดในย่อหน้า */
+}
+
+/* จัดสไตล์บรรทัด "ถึง" และ "จาก" */
+.to-line {
+  font-size: 1rem;
+  font-weight: 600; /* ทำให้เป็นตัวหนาเล็กน้อย */
+}
+.from-line {
+  font-size: 0.8rem;
+  text-align: left; /* จัดให้อยู่ชิดขวา */
+}
+
+/* จัดสไตล์เนื้อหาหลัก และทำการย่อหน้า */
+.body-text {
+  font-size: 0.8rem;
+  text-align: left; /* จัดเนื้อหาให้อ่านง่ายแบบชิดซ้าย */
+  text-indent: 1em; /* ย่อหน้าบรรทัดแรก */
+}
 
 /* --- ส่วนควบคุมแอนิเมชันหลัก (แก้ไขตรงนี้) --- */
 
@@ -235,5 +265,3 @@ body { background-color: #f0e6f6; }
   50%  { transform: rotateX(180deg); z-index: 1; } /* รอ 1 วิ (50% ของ 2 วิ) */
   100% { transform: rotateX(0deg);   z-index: 5; } /* ค่อยปิดในวิสุดท้าย */
 }
-
-
