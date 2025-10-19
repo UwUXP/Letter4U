@@ -66,7 +66,7 @@
 }
 
 .words.line1 { font-size: 1.2rem; }
-.words.line2 { font-size: 0.99rem; }
+.words.line2 { font-size: 0.99rem; text-indent: 2em; }
 .words.line3 { font-size: 0.9rem; }
 
 /* --- ส่วนควบคุมแอนิเมชันหลัก (แก้ไขตรงนี้) --- */
@@ -235,3 +235,4 @@ body { background-color: #f0e6f6; }
   50%  { transform: rotateX(180deg); z-index: 1; } /* รอ 1 วิ (50% ของ 2 วิ) */
   100% { transform: rotateX(0deg);   z-index: 5; } /* ค่อยปิดในวิสุดท้าย */
 }
+
